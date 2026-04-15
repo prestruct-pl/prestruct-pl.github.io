@@ -614,6 +614,180 @@
     .value-right { grid-template-columns: 1fr; }
     .trust-grid { grid-template-columns: 1fr; }
   }
+
+  /* ── PROJECT GRID — replaces case-study vertical list ── */
+  .project-filters {
+    display:flex; gap:10px; margin-bottom:36px; flex-wrap:wrap;
+  }
+  .filter-btn {
+    padding:8px 20px; border-radius:100px;
+    border:1px solid var(--border); background:transparent;
+    color:var(--text-secondary); font-size:13px; cursor:pointer;
+    font-family:'Inter',sans-serif; transition:all 0.2s;
+  }
+  .filter-btn:hover { border-color:var(--accent); color:var(--accent); }
+  .filter-btn.active {
+    background:var(--accent); color:#0a0a0a;
+    border-color:var(--accent); font-weight:600;
+  }
+  .project-grid {
+    display:grid; grid-template-columns:repeat(4,1fr); gap:20px;
+  }
+  .project-card {
+    background:var(--bg-card); border-radius:12px; overflow:hidden;
+    border:1px solid var(--border); cursor:pointer;
+    transition:transform 0.2s, border-color 0.2s;
+  }
+  .project-card:hover {
+    transform:translateY(-4px); border-color:rgba(212,168,67,0.4);
+  }
+  .project-card[data-hidden="true"] { display:none; }
+  .pc-img {
+    width:100%; height:200px; object-fit:cover; display:block;
+    background:var(--bg-card-alt);
+  }
+  .pc-body { padding:18px 20px; }
+  .pc-country {
+    font-size:11px; letter-spacing:2px; text-transform:uppercase;
+    color:var(--accent); margin-bottom:6px; font-weight:500;
+  }
+  .pc-title {
+    font-size:16px; font-weight:700; color:var(--text-primary);
+    margin-bottom:8px; line-height:1.3;
+  }
+  .pc-desc {
+    font-size:13px; color:var(--text-secondary); line-height:1.5;
+    margin-bottom:12px;
+  }
+  .pc-stats { display:flex; gap:16px; flex-wrap:wrap; }
+  .pc-stat { font-size:12px; color:var(--text-secondary); }
+  .pc-stat strong { color:var(--accent); font-weight:600; }
+  .pc-photos {
+    font-size:11px; color:var(--text-dim);
+    display:flex; align-items:center; gap:5px; margin-top:10px;
+  }
+  .pc-photos svg { width:14px; height:14px; fill:var(--text-dim); }
+
+  /* ── MODAL ── */
+  .modal-overlay {
+    position:fixed; inset:0; background:rgba(0,0,0,0.88);
+    z-index:200; display:none; align-items:center; justify-content:center;
+    padding:40px; overflow-y:auto;
+  }
+  .modal-overlay.open { display:flex; }
+  .modal-box {
+    background:var(--bg-card); border-radius:16px; max-width:960px;
+    width:100%; overflow:hidden; border:1px solid rgba(255,255,255,0.1);
+    display:flex; position:relative; max-height:90vh;
+  }
+  .modal-close {
+    position:absolute; top:14px; right:14px; z-index:210;
+    width:36px; height:36px; border-radius:50%;
+    background:rgba(0,0,0,0.6); border:1px solid rgba(255,255,255,0.2);
+    color:#fff; font-size:20px; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    transition:background 0.2s;
+  }
+  .modal-close:hover { background:rgba(0,0,0,0.9); }
+  .modal-gallery {
+    width:50%; position:relative; background:#080808;
+    display:flex; align-items:center; justify-content:center;
+    min-height:420px; overflow:hidden;
+  }
+  .modal-gallery img {
+    width:100%; height:100%; object-fit:cover; position:absolute; inset:0;
+    opacity:0; transition:opacity 0.3s;
+  }
+  .modal-gallery img.active { opacity:1; }
+  .gallery-arrow {
+    position:absolute; top:50%; transform:translateY(-50%);
+    width:36px; height:36px; border-radius:50%;
+    background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.2);
+    color:#fff; display:flex; align-items:center; justify-content:center;
+    cursor:pointer; font-size:18px; z-index:5; transition:background 0.2s;
+  }
+  .gallery-arrow:hover { background:rgba(0,0,0,0.8); }
+  .gallery-arrow.left { left:12px; }
+  .gallery-arrow.right { right:12px; }
+  .gallery-dots {
+    position:absolute; bottom:14px; left:50%; transform:translateX(-50%);
+    display:flex; gap:6px; z-index:5;
+  }
+  .gallery-dot {
+    width:8px; height:8px; border-radius:50%;
+    background:rgba(255,255,255,0.25); transition:background 0.2s; cursor:pointer;
+  }
+  .gallery-dot.active { background:var(--accent); }
+  .modal-content {
+    width:50%; padding:40px; overflow-y:auto;
+    display:flex; flex-direction:column;
+  }
+  .modal-label {
+    font-size:11px; letter-spacing:2px; text-transform:uppercase;
+    color:var(--accent); margin-bottom:8px; font-weight:500;
+  }
+  .modal-title {
+    font-size:26px; font-weight:800; color:var(--text-primary);
+    margin-bottom:16px; line-height:1.3;
+  }
+  .modal-desc {
+    font-size:14px; color:var(--text-secondary); line-height:1.7;
+    margin-bottom:24px;
+  }
+  .modal-stats-grid {
+    display:grid; grid-template-columns:repeat(2,1fr); gap:12px;
+  }
+  .modal-stat-card {
+    background:var(--bg-card-alt); border-radius:8px;
+    padding:16px; border:1px solid var(--border);
+  }
+  .modal-stat-val {
+    font-size:22px; font-weight:800; color:var(--accent); margin-bottom:2px;
+  }
+  .modal-stat-lbl {
+    font-size:11px; color:var(--text-dim); text-transform:uppercase;
+    letter-spacing:1px; font-weight:500;
+  }
+
+  /* ── COOKIE BANNER ── */
+  .cookie-banner {
+    position:fixed; bottom:0; left:0; right:0; z-index:300;
+    background:var(--bg-card); border-top:1px solid var(--border);
+    padding:20px 48px; display:flex; align-items:center;
+    justify-content:space-between; gap:24px;
+    transform:translateY(100%); transition:transform 0.3s ease;
+  }
+  .cookie-banner.show { transform:translateY(0); }
+  .cookie-text {
+    font-size:13px; color:var(--text-secondary); line-height:1.6; flex:1;
+  }
+  .cookie-text a { color:var(--accent); text-decoration:underline; }
+  .cookie-btns { display:flex; gap:12px; flex-shrink:0; }
+  .cookie-accept {
+    padding:10px 24px; background:var(--accent); color:#0a0a0a;
+    border:none; border-radius:4px; font-size:13px; font-weight:600;
+    cursor:pointer; font-family:'Inter',sans-serif;
+  }
+  .cookie-reject {
+    padding:10px 24px; background:transparent; color:var(--text-secondary);
+    border:1px solid var(--border); border-radius:4px; font-size:13px;
+    cursor:pointer; font-family:'Inter',sans-serif;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width:1024px) {
+    .project-grid { grid-template-columns:repeat(2,1fr); }
+    .modal-box { flex-direction:column; max-height:95vh; }
+    .modal-gallery { width:100%; min-height:280px; }
+    .modal-content { width:100%; padding:28px; }
+  }
+  @media (max-width:640px) {
+    .project-grid { grid-template-columns:1fr; }
+    .project-filters { gap:8px; }
+    .filter-btn { padding:6px 14px; font-size:12px; }
+    .cookie-banner { flex-direction:column; padding:16px 24px; }
+  }
+
 </style>
 </head>
 <body>
@@ -801,74 +975,359 @@
   </div>
 </section>
 
-<!-- ═══ REALIZACJE — Sellwise: "case study = problem → rozwiązanie → efekt" ═══ -->
+<!-- ═══ REALIZACJE — Grid + Modal with carousels ═══ -->
 <section id="projekty">
   <div class="section-inner">
     <p class="section-label">Projects</p>
     <h2 class="section-title">We don't tell — we show results</h2>
-    <p class="section-desc">Every project is a specific engineering challenge. Here's how we solved them.</p>
+    <p class="section-desc">Every project is a specific engineering challenge. Click a card to see details and photo gallery.</p>
   </div>
 
-  <!-- Case Study 1 -->
-  <div class="case-study">
-    <div class="cs-image" style="background-image:url('https://konstrukcje-wm.pl/wp-content/uploads/2023/04/B1.jpg')"></div>
-    <div class="cs-content">
-      <div class="cs-label">Project · Sweden</div>
-      <h3>Residential building Malmö</h3>
-      <div class="cs-challenge">
-        <h4>Challenge</h4>
-        <p>Two sections (6 and 10 stories) with full precast walls, slabs, and balconies. Documentation required in English, compliant with Swedish standards.</p>
+  <div class="filter-bar">
+    <button class="filter-btn active" data-filter="ALL">All</button>
+    <button class="filter-btn" data-filter="PL">🇵🇱 Poland</button>
+    <button class="filter-btn" data-filter="SE">🇸🇪 Sweden</button>
+    <button class="filter-btn" data-filter="DK">🇩🇰 Denmark</button>
+  </div>
+
+    <div class="project-grid">
+      <div class="project-card" data-project="malmo" data-country="SE">
+        <img class="card-thumb" src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/B1.jpg" alt="Kv Babord, Malmö" loading="lazy">
+        <div class="card-body">
+          <div class="card-country"><span class="flag">🇸🇪</span> SWEDEN</div>
+          <h3 class="card-name">Kv Babord, Malmö</h3>
+          <p class="card-desc">Residential building, 6 and 10 stories. Full precast construction.</p>
+          <div class="card-stats"><span class="card-stat"><strong>6 750</strong> m² slabs</span><span class="card-stat"><strong>104</strong> balconies</span></div>
+          <div class="card-photos"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg> 8 photos</div>
+        </div>
       </div>
-      <div class="cs-solution">
-        <h4>Our solution</h4>
-        <p>Complete precast design with production-ready BIM files. Safety systems, electrical outlets, and permanent formwork designed in the 3D model.</p>
+      <div class="project-card" data-project="orebro" data-country="SE">
+        <img class="card-thumb" src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/G1.jpg" alt="Kv Giffeln, Örebro" loading="lazy">
+        <div class="card-body">
+          <div class="card-country"><span class="flag">🇸🇪</span> SWEDEN</div>
+          <h3 class="card-name">Kv Giffeln, Örebro</h3>
+          <p class="card-desc">Care home, 3 stories. Filigree slab + composite walls.</p>
+          <div class="card-stats"><span class="card-stat"><strong>7 080</strong> m² slabs</span><span class="card-stat"><strong>5 245</strong> m² walls</span></div>
+          <div class="card-photos"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg> 6 photos</div>
+        </div>
       </div>
-      <div class="cs-stats">
-        <div class="cs-stat"><div class="num">4 200 m²</div><div class="label">precast walls</div></div>
-        <div class="cs-stat"><div class="num">6 750 m²</div><div class="label">filigree slabs</div></div>
-        <div class="cs-stat"><div class="num">104</div><div class="label">balconies</div></div>
+      <div class="project-card" data-project="ikea" data-country="DK">
+        <img class="card-thumb" src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/I1.jpg" alt="IKEA, Copenhagen" loading="lazy">
+        <div class="card-body">
+          <div class="card-country"><span class="flag">🇩🇰</span> DENMARK</div>
+          <h3 class="card-name">IKEA, Copenhagen</h3>
+          <p class="card-desc">Commercial building with 3.5 km communication corridor on terraces.</p>
+          <div class="card-stats"><span class="card-stat"><strong>3 595</strong> m² slabs</span></div>
+          <div class="card-photos"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg> 6 photos</div>
+        </div>
+      </div>
+      <div class="project-card" data-project="formee" data-country="PL">
+        <img class="card-thumb" src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/F1.jpg" alt="Formee, Międzyrzecz" loading="lazy">
+        <div class="card-body">
+          <div class="card-country"><span class="flag">🇵🇱</span> POLAND</div>
+          <h3 class="card-name">Formee, Międzyrzecz</h3>
+          <p class="card-desc">Precast production plant, double-nave hall 6,656 m².</p>
+          <div class="card-stats"><span class="card-stat"><strong>103</strong> columns</span><span class="card-stat"><strong>56</strong> girders</span></div>
+          <div class="card-photos"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg> 4 photos</div>
+        </div>
+      </div>
+      <div class="project-card" data-project="slupsk" data-country="PL">
+        <img class="card-thumb" src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/s1.jpg" alt="Residential building, Słupsk" loading="lazy">
+        <div class="card-body">
+          <div class="card-country"><span class="flag">🇵🇱</span> POLAND</div>
+          <h3 class="card-name">Residential building, Słupsk</h3>
+          <p class="card-desc">5 stories + attic. Garage hall, commercial and residential units.</p>
+          <div class="card-stats"><span class="card-stat"><strong>680</strong> m² commercial</span><span class="card-stat"><strong>835</strong> m² residential</span></div>
+          <div class="card-photos"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg> 6 photos</div>
+        </div>
+      </div>
+      <div class="project-card" data-project="legnica" data-country="PL">
+        <img class="card-thumb" src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/L1.png" alt="Tenement building, Legnica" loading="lazy">
+        <div class="card-body">
+          <div class="card-country"><span class="flag">🇵🇱</span> POLAND</div>
+          <h3 class="card-name">Tenement building, Legnica</h3>
+          <p class="card-desc">5 stories + attic. Ceramic-concrete walls, conservation protection.</p>
+          <div class="card-stats"><span class="card-stat"><strong>3 334</strong> m² walls</span></div>
+          <div class="card-photos"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg> 5 photos</div>
+        </div>
+      </div>
+      <div class="project-card" data-project="gdynia" data-country="PL">
+        <img class="card-thumb" src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/H1.jpg" alt="Sokółka Zielenisz, Gdynia" loading="lazy">
+        <div class="card-body">
+          <div class="card-country"><span class="flag">🇵🇱</span> POLAND</div>
+          <h3 class="card-name">Sokółka Zielenisz, Gdynia</h3>
+          <p class="card-desc">Complex of buildings up to 13 stories. Filigree slabs as monolith.</p>
+          <div class="card-stats"><span class="card-stat"><strong>26 086</strong> m² slabs</span></div>
+          <div class="card-photos"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg> 7 photos</div>
+        </div>
+      </div>
+      <div class="project-card" data-project="krotoszyn" data-country="PL">
+        <img class="card-thumb" src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/K1.jpg" alt="Shopping gallery, Krotoszyn" loading="lazy">
+        <div class="card-body">
+          <div class="card-country"><span class="flag">🇵🇱</span> POLAND</div>
+          <h3 class="card-name">Shopping gallery, Krotoszyn</h3>
+          <p class="card-desc">6,700 m², facade replicating a 19th century industrial building.</p>
+          <div class="card-stats"><span class="card-stat"><strong>85</strong> columns</span><span class="card-stat"><strong>77</strong> beams</span></div>
+          <div class="card-photos"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg> 4 photos</div>
+        </div>
+      </div>
+    </div>
+
+  <div class="modal-overlay" data-modal="malmo">
+    <div class="modal-box">
+      <button class="modal-close">✕</button>
+      <div class="modal-gallery">
+        <img src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/B1.jpg" alt="Kv Babord, Malmö" class="active" loading="lazy">
+        <img src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/B2.jpg" alt="Kv Babord, Malmö" loading="lazy">
+        <img src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/B3.jpg" alt="Kv Babord, Malmö" loading="lazy">
+        <img src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/B4.jpg" alt="Kv Babord, Malmö" loading="lazy">
+        <img src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/B5.jpg" alt="Kv Babord, Malmö" loading="lazy">
+        <img src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/B6.jpg" alt="Kv Babord, Malmö" loading="lazy">
+        <img src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/B7.jpg" alt="Kv Babord, Malmö" loading="lazy">
+        <img src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/B8.jpg" alt="Kv Babord, Malmö" loading="lazy">
+        <button class="gallery-arrow prev">‹</button>
+        <button class="gallery-arrow next">›</button>
+        <div class="gallery-dots">
+          <button class="gallery-dot active" data-idx="0"></button>
+          <button class="gallery-dot" data-idx="1"></button>
+          <button class="gallery-dot" data-idx="2"></button>
+          <button class="gallery-dot" data-idx="3"></button>
+          <button class="gallery-dot" data-idx="4"></button>
+          <button class="gallery-dot" data-idx="5"></button>
+          <button class="gallery-dot" data-idx="6"></button>
+          <button class="gallery-dot" data-idx="7"></button>
+        </div>
+      </div>
+      <div class="modal-content">
+        <div class="modal-label">PROJECT · SWEDEN</div>
+        <h2 class="modal-title">Kv Babord, Malmö</h2>
+        <p class="modal-desc">Residential building consisting of two sections: 6 and 10 stories in Malmö, Sweden. Design work involved full prefabrication of building construction including composite and solid walls, filigree slabs, and balconies. Precast elements were equipped at the design stage with all accessories necessary for proper building function, including safety systems, electrical outlets, and temporary formwork for casting.</p>
+        <div class="modal-stats-grid">
+        <div class="modal-stat-card"><div class="modal-stat-val">2 440 m²</div><div class="modal-stat-lbl">COMPOSITE WALLS</div></div>
+        <div class="modal-stat-card"><div class="modal-stat-val">3 200 m²</div><div class="modal-stat-lbl">SOLID WALLS</div></div>
+        <div class="modal-stat-card"><div class="modal-stat-val">6 750 m²</div><div class="modal-stat-lbl">FILIGREE SLABS</div></div>
+        <div class="modal-stat-card"><div class="modal-stat-val">104 pcs.</div><div class="modal-stat-lbl">BALCONIES</div></div>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- Case Study 2 -->
-  <div class="case-study">
-    <div class="cs-image" style="background-image:url('https://konstrukcje-wm.pl/wp-content/uploads/2023/04/I1.jpg')"></div>
-    <div class="cs-content">
-      <div class="cs-label">Project · Denmark</div>
-      <h3>IKEA Kopenhaga</h3>
-      <div class="cs-challenge">
-        <h4>Challenge</h4>
-        <p>Large-format commercial building with demanding coordination between multiple precast suppliers. Documentation in three languages.</p>
+  <div class="modal-overlay" data-modal="orebro">
+    <div class="modal-box">
+      <button class="modal-close">✕</button>
+      <div class="modal-gallery">
+        <img src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/G1.jpg" alt="Kv Giffeln, Örebro" class="active" loading="lazy">
+        <img src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/g2.jpg" alt="Kv Giffeln, Örebro" loading="lazy">
+        <img src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/g3.jpg" alt="Kv Giffeln, Örebro" loading="lazy">
+        <img src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/G4.jpg" alt="Kv Giffeln, Örebro" loading="lazy">
+        <img src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/G5.jpg" alt="Kv Giffeln, Örebro" loading="lazy">
+        <img src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/G6.jpg" alt="Kv Giffeln, Örebro" loading="lazy">
+        <button class="gallery-arrow prev">‹</button>
+        <button class="gallery-arrow next">›</button>
+        <div class="gallery-dots">
+          <button class="gallery-dot active" data-idx="0"></button>
+          <button class="gallery-dot" data-idx="1"></button>
+          <button class="gallery-dot" data-idx="2"></button>
+          <button class="gallery-dot" data-idx="3"></button>
+          <button class="gallery-dot" data-idx="4"></button>
+          <button class="gallery-dot" data-idx="5"></button>
+        </div>
       </div>
-      <div class="cs-solution">
-        <h4>Our solution</h4>
-        <p>Central BIM model coordinating all suppliers. Production documentation delivered directly to factories in a line-ready format.</p>
-      </div>
-      <div class="cs-result">
-        <h4>Result</h4>
-        <p>Project delivered on time despite logistical complexity. Zero clashes during assembly thanks to 3D model coordination.</p>
+      <div class="modal-content">
+        <div class="modal-label">PROJECT · SWEDEN</div>
+        <h2 class="modal-title">Kv Giffeln, Örebro</h2>
+        <p class="modal-desc">Three-story care facility in Örebro, Sweden. The project included design of filigree slabs and composite walls. Element repetition analysis was performed to optimize the number of unique molds while preserving architectural aesthetics.</p>
+        <div class="modal-stats-grid">
+        <div class="modal-stat-card"><div class="modal-stat-val">7 080 m²</div><div class="modal-stat-lbl">SLABS</div></div>
+        <div class="modal-stat-card"><div class="modal-stat-val">5 245 m²</div><div class="modal-stat-lbl">WALLS</div></div>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- Case Study 3 -->
-  <div class="case-study">
-    <div class="cs-image" style="background-image:url('https://konstrukcje-wm.pl/wp-content/uploads/2023/04/G1.jpg')"></div>
-    <div class="cs-content">
-      <div class="cs-label">Project · Sweden</div>
-      <h3>Kv Giffeln, Örebro</h3>
-      <div class="cs-challenge">
-        <h4>Challenge</h4>
-        <p>Residential building requiring optimization of repetitive precast elements. The client expected maximum standardization while preserving the individual architectural design.</p>
+  <div class="modal-overlay" data-modal="ikea">
+    <div class="modal-box">
+      <button class="modal-close">✕</button>
+      <div class="modal-gallery">
+        <img src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/I1.jpg" alt="IKEA, Copenhagen" class="active" loading="lazy">
+        <img src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/I2.jpg" alt="IKEA, Copenhagen" loading="lazy">
+        <img src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/I3.jpg" alt="IKEA, Copenhagen" loading="lazy">
+        <img src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/I4.jpg" alt="IKEA, Copenhagen" loading="lazy">
+        <img src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/I5.jpg" alt="IKEA, Copenhagen" loading="lazy">
+        <img src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/budowa.jpg" alt="IKEA, Copenhagen" loading="lazy">
+        <button class="gallery-arrow prev">‹</button>
+        <button class="gallery-arrow next">›</button>
+        <div class="gallery-dots">
+          <button class="gallery-dot active" data-idx="0"></button>
+          <button class="gallery-dot" data-idx="1"></button>
+          <button class="gallery-dot" data-idx="2"></button>
+          <button class="gallery-dot" data-idx="3"></button>
+          <button class="gallery-dot" data-idx="4"></button>
+          <button class="gallery-dot" data-idx="5"></button>
+        </div>
       </div>
-      <div class="cs-solution">
-        <h4>Our solution</h4>
-        <p>Element repetition analysis and typization optimization. Reduction of unique molds while preserving the architect's aesthetics. Production files delivered to the factory in Sweden.</p>
+      <div class="modal-content">
+        <div class="modal-label">PROJECT · DENMARK</div>
+        <h2 class="modal-title">IKEA, Copenhagen</h2>
+        <p class="modal-desc">Large-format commercial building for IKEA in Copenhagen, Denmark. The project required coordination between multiple precast suppliers and documentation in three languages. Central BIM model coordinating all suppliers with production documentation delivered directly to factories.</p>
+        <div class="modal-stats-grid">
+        <div class="modal-stat-card"><div class="modal-stat-val">3 595 m²</div><div class="modal-stat-lbl">SLABS</div></div>
+        </div>
       </div>
-      <div class="cs-result">
-        <h4>Result</h4>
-        <p>Fewer molds = lower production costs. Shorter delivery time thanks to element standardization.</p>
+    </div>
+  </div>
+
+  <div class="modal-overlay" data-modal="formee">
+    <div class="modal-box">
+      <button class="modal-close">✕</button>
+      <div class="modal-gallery">
+        <img src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/F1.jpg" alt="Formee, Międzyrzecz" class="active" loading="lazy">
+        <img src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/F2.jpg" alt="Formee, Międzyrzecz" loading="lazy">
+        <img src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/F3.jpg" alt="Formee, Międzyrzecz" loading="lazy">
+        <img src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/F4.jpeg" alt="Formee, Międzyrzecz" loading="lazy">
+        <button class="gallery-arrow prev">‹</button>
+        <button class="gallery-arrow next">›</button>
+        <div class="gallery-dots">
+          <button class="gallery-dot active" data-idx="0"></button>
+          <button class="gallery-dot" data-idx="1"></button>
+          <button class="gallery-dot" data-idx="2"></button>
+          <button class="gallery-dot" data-idx="3"></button>
+        </div>
+      </div>
+      <div class="modal-content">
+        <div class="modal-label">PROJECT · POLAND</div>
+        <h2 class="modal-title">Formee, Międzyrzecz</h2>
+        <p class="modal-desc">Precast production plant in Międzyrzecz, Poland. Double-nave industrial hall with a total area of 6,656 m². The structure was designed using a column-and-beam system with precast roof girders.</p>
+        <div class="modal-stats-grid">
+        <div class="modal-stat-card"><div class="modal-stat-val">103</div><div class="modal-stat-lbl">COLUMNS</div></div>
+        <div class="modal-stat-card"><div class="modal-stat-val">56</div><div class="modal-stat-lbl">GIRDERS</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" data-modal="slupsk">
+    <div class="modal-box">
+      <button class="modal-close">✕</button>
+      <div class="modal-gallery">
+        <img src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/s1.jpg" alt="Residential building, Słupsk" class="active" loading="lazy">
+        <img src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/s2.jpg" alt="Residential building, Słupsk" loading="lazy">
+        <img src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/s3.jpg" alt="Residential building, Słupsk" loading="lazy">
+        <img src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/s4.jpg" alt="Residential building, Słupsk" loading="lazy">
+        <img src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/s5.jpg" alt="Residential building, Słupsk" loading="lazy">
+        <img src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/s6.jpg" alt="Residential building, Słupsk" loading="lazy">
+        <button class="gallery-arrow prev">‹</button>
+        <button class="gallery-arrow next">›</button>
+        <div class="gallery-dots">
+          <button class="gallery-dot active" data-idx="0"></button>
+          <button class="gallery-dot" data-idx="1"></button>
+          <button class="gallery-dot" data-idx="2"></button>
+          <button class="gallery-dot" data-idx="3"></button>
+          <button class="gallery-dot" data-idx="4"></button>
+          <button class="gallery-dot" data-idx="5"></button>
+        </div>
+      </div>
+      <div class="modal-content">
+        <div class="modal-label">PROJECT · POLAND</div>
+        <h2 class="modal-title">Residential building, Słupsk</h2>
+        <p class="modal-desc">Multi-family residential building in Słupsk, Poland. Five stories plus attic with garage hall on the ground floor, commercial and service spaces, and residential apartments on upper floors.</p>
+        <div class="modal-stats-grid">
+        <div class="modal-stat-card"><div class="modal-stat-val">680 m²</div><div class="modal-stat-lbl">COMMERCIAL AREA</div></div>
+        <div class="modal-stat-card"><div class="modal-stat-val">835 m²</div><div class="modal-stat-lbl">RESIDENTIAL AREA</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" data-modal="legnica">
+    <div class="modal-box">
+      <button class="modal-close">✕</button>
+      <div class="modal-gallery">
+        <img src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/L1.png" alt="Tenement building, Legnica" class="active" loading="lazy">
+        <img src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/l2-1.jpg" alt="Tenement building, Legnica" loading="lazy">
+        <img src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/L3-1.jpg" alt="Tenement building, Legnica" loading="lazy">
+        <img src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/l4-1.jpg" alt="Tenement building, Legnica" loading="lazy">
+        <img src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/l5-1.jpg" alt="Tenement building, Legnica" loading="lazy">
+        <button class="gallery-arrow prev">‹</button>
+        <button class="gallery-arrow next">›</button>
+        <div class="gallery-dots">
+          <button class="gallery-dot active" data-idx="0"></button>
+          <button class="gallery-dot" data-idx="1"></button>
+          <button class="gallery-dot" data-idx="2"></button>
+          <button class="gallery-dot" data-idx="3"></button>
+          <button class="gallery-dot" data-idx="4"></button>
+        </div>
+      </div>
+      <div class="modal-content">
+        <div class="modal-label">PROJECT · POLAND</div>
+        <h2 class="modal-title">Tenement building, Legnica</h2>
+        <p class="modal-desc">Historic tenement restoration in Legnica, Poland. Five stories plus attic with ceramic-concrete walls. The project was carried out under conservation supervision.</p>
+        <div class="modal-stats-grid">
+        <div class="modal-stat-card"><div class="modal-stat-val">3 334 m²</div><div class="modal-stat-lbl">WALLS</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" data-modal="gdynia">
+    <div class="modal-box">
+      <button class="modal-close">✕</button>
+      <div class="modal-gallery">
+        <img src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/H1.jpg" alt="Sokółka Zielenisz, Gdynia" class="active" loading="lazy">
+        <img src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/H2.jpg" alt="Sokółka Zielenisz, Gdynia" loading="lazy">
+        <img src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/H3.jpg" alt="Sokółka Zielenisz, Gdynia" loading="lazy">
+        <img src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/H4.jpg" alt="Sokółka Zielenisz, Gdynia" loading="lazy">
+        <img src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/H5.jpg" alt="Sokółka Zielenisz, Gdynia" loading="lazy">
+        <img src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/H6.jpg" alt="Sokółka Zielenisz, Gdynia" loading="lazy">
+        <img src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/H7.jpg" alt="Sokółka Zielenisz, Gdynia" loading="lazy">
+        <button class="gallery-arrow prev">‹</button>
+        <button class="gallery-arrow next">›</button>
+        <div class="gallery-dots">
+          <button class="gallery-dot active" data-idx="0"></button>
+          <button class="gallery-dot" data-idx="1"></button>
+          <button class="gallery-dot" data-idx="2"></button>
+          <button class="gallery-dot" data-idx="3"></button>
+          <button class="gallery-dot" data-idx="4"></button>
+          <button class="gallery-dot" data-idx="5"></button>
+          <button class="gallery-dot" data-idx="6"></button>
+        </div>
+      </div>
+      <div class="modal-content">
+        <div class="modal-label">PROJECT · POLAND</div>
+        <h2 class="modal-title">Sokółka Zielenisz, Gdynia</h2>
+        <p class="modal-desc">Multi-building residential complex in Gdynia, Poland, with buildings up to 13 stories. Filigree slabs designed to act as monolithic elements.</p>
+        <div class="modal-stats-grid">
+        <div class="modal-stat-card"><div class="modal-stat-val">26 086 m²</div><div class="modal-stat-lbl">SLABS</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" data-modal="krotoszyn">
+    <div class="modal-box">
+      <button class="modal-close">✕</button>
+      <div class="modal-gallery">
+        <img src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/K1.jpg" alt="Shopping gallery, Krotoszyn" class="active" loading="lazy">
+        <img src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/K2.jpg" alt="Shopping gallery, Krotoszyn" loading="lazy">
+        <img src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/K3.jpg" alt="Shopping gallery, Krotoszyn" loading="lazy">
+        <img src="https://konstrukcje-wm.pl/wp-content/uploads/2023/04/K4.jpg" alt="Shopping gallery, Krotoszyn" loading="lazy">
+        <button class="gallery-arrow prev">‹</button>
+        <button class="gallery-arrow next">›</button>
+        <div class="gallery-dots">
+          <button class="gallery-dot active" data-idx="0"></button>
+          <button class="gallery-dot" data-idx="1"></button>
+          <button class="gallery-dot" data-idx="2"></button>
+          <button class="gallery-dot" data-idx="3"></button>
+        </div>
+      </div>
+      <div class="modal-content">
+        <div class="modal-label">PROJECT · POLAND</div>
+        <h2 class="modal-title">Shopping gallery, Krotoszyn</h2>
+        <p class="modal-desc">Commercial gallery in Krotoszyn, Poland. Total area of 6,700 m² with a facade designed to replicate the appearance of a 19th-century industrial building.</p>
+        <div class="modal-stats-grid">
+        <div class="modal-stat-card"><div class="modal-stat-val">85</div><div class="modal-stat-lbl">COLUMNS</div></div>
+        <div class="modal-stat-card"><div class="modal-stat-val">77</div><div class="modal-stat-lbl">BEAMS</div></div>
+        </div>
       </div>
     </div>
   </div>
@@ -988,6 +1447,73 @@
 <footer>
   © 2026 PreStruct · PreStruct · Structural Design Studio · Gdańsk
 </footer>
+
+
+<!-- Cookie Banner -->
+<div class="cookie-banner" id="cookieBanner">
+  <p class="cookie-text">We use cookies only to remember your consent. We do not use analytical or advertising cookies. <a href="#" onclick="document.getElementById('privacyOverlay').classList.add('open');return false;">Privacy Policy</a></p>
+  <div class="cookie-btns">
+    <button class="cookie-accept" onclick="acceptCookies()">Accept</button>
+    <button class="cookie-reject" onclick="rejectCookies()">Reject</button>
+  </div>
+</div>
+<div class="privacy-overlay" id="privacyOverlay">
+  <div class="privacy-box">
+    <h2>Privacy Policy</h2>
+    <h3>Data Controller</h3><p>PreStruct · Konstrukcje WM Sp. z o.o.<br>ul. Sarnia 6, 80-336 Gdańsk<br>NIP: 5842627831 · REGON: 381566723<br>Contact: biuro@konstrukcje-wm.pl</p><h3>Cookies</h3><p>This website uses only technical cookies necessary for its proper functioning. We do not use analytical, marketing, or third-party cookies.</p><h3>Your Rights (GDPR)</h3><p>You have the right to access, rectify, delete, restrict processing, data portability, and object to processing of your personal data. Contact: biuro@konstrukcje-wm.pl.</p><h3>Contact</h3><p>For privacy-related questions: biuro@konstrukcje-wm.pl.</p>
+    <button class="privacy-close" onclick="document.getElementById('privacyOverlay').classList.remove('open')">Close</button>
+  </div>
+</div>
+
+<script>
+/* Filters */
+document.querySelectorAll(".filter-btn").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    document.querySelectorAll(".filter-btn").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    const f=btn.dataset.filter;
+    document.querySelectorAll(".project-card").forEach(c=>{
+      c.dataset.hidden=(f!=="ALL"&&c.dataset.country!==f)?"true":"false";
+    });
+  });
+});
+/* Open modal */
+document.querySelectorAll(".project-card").forEach(card=>{
+  card.addEventListener("click",()=>{
+    const m=document.querySelector(".modal-overlay[data-modal=\""+card.dataset.project+"\"]");
+    if(m){m.classList.add("open");document.body.style.overflow="hidden";}
+  });
+});
+/* Close modal */
+document.querySelectorAll(".modal-close").forEach(btn=>{
+  btn.addEventListener("click",()=>{btn.closest(".modal-overlay").classList.remove("open");document.body.style.overflow="";});
+});
+document.querySelectorAll(".modal-overlay").forEach(o=>{
+  o.addEventListener("click",e=>{if(e.target===o){o.classList.remove("open");document.body.style.overflow="";}});
+});
+/* Gallery */
+document.querySelectorAll(".modal-overlay").forEach(modal=>{
+  const imgs=modal.querySelectorAll(".modal-gallery img");
+  const dots=modal.querySelectorAll(".gallery-dot");
+  let cur=0;
+  function show(i){imgs.forEach((img,idx)=>{img.classList.toggle("active",idx===i);});dots.forEach((d,idx)=>{d.classList.toggle("active",idx===i);});cur=i;}
+  modal.querySelector(".gallery-arrow.prev")?.addEventListener("click",()=>show((cur-1+imgs.length)%imgs.length));
+  modal.querySelector(".gallery-arrow.next")?.addEventListener("click",()=>show((cur+1)%imgs.length));
+  dots.forEach(d=>d.addEventListener("click",()=>show(+d.dataset.idx)));
+});
+/* Keyboard */
+document.addEventListener("keydown",e=>{
+  const open=document.querySelector(".modal-overlay.open");
+  if(!open)return;
+  if(e.key==="Escape"){open.classList.remove("open");document.body.style.overflow="";}
+  if(e.key==="ArrowRight")open.querySelector(".gallery-arrow.next")?.click();
+  if(e.key==="ArrowLeft")open.querySelector(".gallery-arrow.prev")?.click();
+});
+/* Cookie */
+function acceptCookies(){localStorage.setItem("cookie_consent","accepted");document.getElementById("cookieBanner").classList.remove("show");}
+function rejectCookies(){localStorage.setItem("cookie_consent","rejected");document.getElementById("cookieBanner").classList.remove("show");}
+if(!localStorage.getItem("cookie_consent")){setTimeout(()=>document.getElementById("cookieBanner").classList.add("show"),1200);}
+</script>
 
 </body>
 </html>
