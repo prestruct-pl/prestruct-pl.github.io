@@ -1,1 +1,28 @@
-VXNlci1hZ2VudDogKgpBbGxvdzogLwoKVXNlci1hZ2VudDogR1BUQm90CkFsbG93OiAvCgpVc2VyLWFnZW50OiBDaGF0R1BULVVzZXIKQWxsb3c6IC8KClVzZXItYWdlbnQ6IENsYXVkZUJvdApBbGxvdzogLwoKVXNlci1hZ2VudDogQ2xhdWRlLVdlYgpBbGxvdzogLwoKVXNlci1hZ2VudDogUGVycGxleGl0eUJvdApBbGxvdzogLwoKVXNlci1hZ2VudDogR29vZ2xlYm90CkFsbG93OiAvCgpVc2VyLWFnZW50OiBCaW5nYm90CkFsbG93OiAvCgpVc2VyLWFnZW50OiBDQ0JvdApBbGxvdzogLwoKU2l0ZW1hcDogaHR0cHM6Ly9wcmVzdHJ1Y3QtcGwuZ2l0aHViLmlvL3NpdGVtYXAueG1sCg==
+User-agent: *
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://prestruct-pl.github.io/sitemap.xml
